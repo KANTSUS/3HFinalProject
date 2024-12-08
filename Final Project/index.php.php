@@ -8,7 +8,6 @@
 </head>
 <body>
  
-  <!-- Hero Section -->
   <header class="hero">
     <div class="hero-content">
       <h1>Your Wellness Journey Starts Here</h1>
@@ -22,24 +21,19 @@
   </header>
 
   <div class="container">
-    <!-- Services Overview -->
     <section class="services">
       <h2>Our Popular Services</h2>
       <div class="services-grid" id="services-grid">
-        <!-- JavaScript dynamically loads services here -->
       </div>
     </section>
 
  
-    <!-- Testimonials -->
     <section class="testimonials">
       <h2>What Our Clients Say</h2>
       <div class="testimonial-slider" id="testimonial-slider">
-        <!-- JavaScript dynamically loads testimonials here -->
       </div>
     </section>
 
-    <!-- Call to Action -->
     <section class="cta">
       <h2>Take the First Step to Wellness</h2>
       <nav>

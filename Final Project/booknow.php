@@ -16,15 +16,12 @@
       <div class="left-panel">
         <img src="profile.jpg" alt="Profile Picture" class="profile-img">
         
-        <!-- Display dynamic username -->
         <h2>
           <?php
-            // Check if the 'username' query parameter is set and display it
             if (isset($_GET['username'])) {
-                // Sanitize and display the username
                 echo htmlspecialchars($_GET['username']);
             } else {
-                echo "Guest";  // Default if no username is passed
+                echo "Guest";  
             }
           ?>
         </h2>
@@ -46,9 +43,7 @@
           </div>
           <div class="days">
             <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-            <!-- Empty days -->
             <div></div><div></div><div></div><div></div><div></div>
-            <!-- Calendar days -->
             <div>30</div><div>31</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
             <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
             <div>13</div><div>14</div><div>15</div><div>16</div>

@@ -36,10 +36,8 @@
 
         <script>
         function navigateToBook() {
-            // Get the username from the input field
-            var username = document.getElementById('name').value; // Assuming the username input field has id="name"
+            var username = document.getElementById('name').value; 
             
-            // Redirect to booknow.php with the username as a query parameter
             window.location.href = 'booknow.php?username=' + encodeURIComponent(username);
         }
         </script>

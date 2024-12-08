@@ -1,11 +1,9 @@
-// Example services data
 const services = [
     { name: "Swedish Massage", image: "image/massage.jpg", description: "Relax and unwind with a soothing massage.", price: "$50" },
     { name: "Aromatherapy", image: "image/aroma.jpg", description: "Enhance your mood with essential oils.", price: "$60" },
     { name: "Facial Treatment", image: "image/facial.jpg", description: "Rejuvenate your skin with our treatments.", price: "$70" }
 ];
 
-// Example testimonials data
 const testimonials = [
     { name: "John Doe", comment: "Amazing experience! Highly recommended.", rating: 5 },
     { name: "Jane Smith", comment: "Felt so relaxed after the therapy!", rating: 4.5 }
@@ -18,7 +16,6 @@ const serviceTypeFilter = document.getElementById('service-type');
 const durationFilter = document.getElementById('duration');
 const sortBy = document.getElementById('sort-by');
 
-// Load services dynamically
 services.forEach(service => {
     const serviceCard = document.createElement('div');
     serviceCard.classList.add('service-card');
@@ -32,7 +29,6 @@ services.forEach(service => {
     servicesGrid.appendChild(serviceCard);
 });
 
-// Load testimonials
 const testimonialSlider = document.getElementById('testimonial-slider');
 testimonials.forEach(testimonial => {
     const card = document.createElement('div');

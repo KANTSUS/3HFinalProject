@@ -32,7 +32,6 @@
         </select>
       </div>
     </aside>
-    <!-- Main Content -->
     <main class="service-list">
       <h1>Available Services</h1>
       <div class="sorting">
@@ -44,7 +43,6 @@
         </select>
       </div>
       <div class="services-grid" id="services-grid">
-        <!-- JavaScript dynamically loads services here -->
       </div>
     </main>
         

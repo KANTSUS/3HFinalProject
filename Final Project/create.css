@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ensures the body takes the full viewport height */
+    height: 100vh; 
 }
 
 .personal-info {
@@ -14,8 +14,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Optional: set a width for better appearance */
-    text-align: center; /* Centers the text inside the form */
+    width: 300px; 
+    text-align: center; 
 }
 
 h2 {
@@ -29,7 +29,7 @@ form {
 
 label {
     margin-top: 10px;
-    text-align: left; /* Ensures labels are aligned to the left */
+    text-align: left; 
 }
 
 input {
@@ -54,8 +54,8 @@ button:hover {
 }
 
 .navigation {
-    margin-top: 15px; /* Adds space between the Save Changes button and the Home button */
-    text-align: center; /* Centers the Home button horizontally */
+    margin-top: 15px; 
+    text-align: center; 
 }
 
 .navigation button {
