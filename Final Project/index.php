@@ -38,11 +38,50 @@
       <h2>Take the First Step to Wellness</h2>
       <nav>
                 <a  class="cta-btn1" href="create.php" id="create-link">Create an Account</a>
-                <a class="cta-btn .secondary" href="schedule.php" id="schedule-link">Schedule Your First Session</a>
+                <a class="cta-btn1 secondary" href="#" id="login-link">Login</a>
+                <a class="cta-btn1 .secondary" href="schedule.php" id="schedule-link">Schedule Your First Session</a>
             </nav>
 
     </section>
   </div>
+
+  <div class="popup-login" id="popup-login">
+    <div class="login-form">
+      <h2>Login</h2>
+      <form action="login.php" method="POST">
+        <input type="email" id="email" name="email" placeholder="Email" required><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+      </form>
+      <button class="close-btn" id="close-popup">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Get the login button, popup and close button
+    const loginButton = document.getElementById('login-link');
+    const popup = document.getElementById('popup-login');
+    const closePopupButton = document.getElementById('close-popup');
+
+    // Show the popup when login link is clicked
+    loginButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      popup.style.display = 'flex'; // Show the popup
+    });
+
+    // Close the popup when close button is clicked
+    closePopupButton.addEventListener('click', function() {
+      popup.style.display = 'none'; // Hide the popup
+    });
+
+    // Close the popup when clicked outside the form
+    window.addEventListener('click', function(event) {
+      if (event.target === popup) {
+        popup.style.display = 'none'; // Hide the popup if clicked outside
+      }
+    });
+  </script>
+
 
   <script src="script.js"></script>
 </body>
