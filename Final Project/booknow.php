@@ -36,33 +36,26 @@
            You will receive an email with joining instructions/link to join the meeting.</p>
       </div>
 
-      <div class="right-panel">
-        <h2>Select a Date & Time</h2>
-        <div class="calendar">
-          <div class="month">
-            <button class="arrow">&#8592;</button>
-            <span>FEBRUARY 2022</span>
-            <button class="arrow">&#8594;</button>
-          </div>
-          <div class="days">
+      <div class="calendar">
+    <div class="month">
+        <button class="arrow" onclick="changeMonth(-1)">&#8592;</button>
+        <span id="month-year"></span>
+        <button class="arrow" onclick="changeMonth(1)">&#8594;</button>
+    </div>
+    <div class="days" id="calendar-days"></div>
+</div>
+        <div class="days">
             <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-            <!-- Empty days -->
-            <div></div><div></div><div></div><div></div><div></div>
-            <!-- Calendar days -->
-            <div>30</div><div>31</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
-            <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
-            <div>13</div><div>14</div><div>15</div><div>16</div>
-            <div class="selected">17</div>
-            <div>18</div><div>19</div><div>20</div><div class="active">21</div><div>22</div>
-            <div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
-          </div>
+            <div id="calendar-days"></div>
         </div>
-        <div class="time-zone">
-          <label for="time-zone">Select Time Zone</label>
-          <select id="time-zone">
+    </div>
+    <div class="time-zone">
+        <label for="time-zone">Select Time Zone</label>
+        <select id="time-zone">
             <option value="Asia/Calcutta">Asia/Calcutta (IST +05:30)</option>
-          </select>
-        </div>
+        </select>
+    </div>
+</div>
         <div class="time-slots">
           <h3>Feb 17, 2022</h3>
           <div class="time-slot">9:00 am</div>
@@ -87,6 +80,6 @@
     }
   </script>
 
- 
+<script src="calendar.js"></script>
 </body>
 </html>

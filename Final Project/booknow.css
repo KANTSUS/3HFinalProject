@@ -116,3 +116,23 @@ body {
     color: white;
   }
   
+
+  @media (max-width: 768px) {
+    .booking-container {
+      flex-direction: column;
+    }
+    .left-panel, .right-panel {
+      width: 100%;
+    }
+  }
+
+
+  .time-slot:hover {
+    transition:  0.3s, color 0.3s;
+  }
+
+  .days div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
