@@ -5,28 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Service</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             color: #333;
+            line-height: 1.6;
         }
 
-        .sidebar {
-            background-color: #fff;
+        /* Layout */
+        .container {
+            display: flex;
+            justify-content: space-between;
             padding: 20px;
-            width: 250px;
-            height: 100vh;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-y: auto;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        h2 {
-            margin-top: 0;
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
         }
 
         .filter {
@@ -34,184 +48,179 @@
         }
 
         .filter h3 {
+            font-size: 18px;
+            color: #34495e;
             margin-bottom: 10px;
-            font-size: 16px;
         }
 
-        .filter select, .filter input {
+        select, input[type="range"] {
             width: 100%;
             padding: 8px;
-            margin-top: 5px;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-
-        .filter input[type="range"] {
-            width: calc(100% - 30px);
-            display: inline-block;
         }
 
         #price-value {
+            display: inline-block;
+            margin-top: 10px;
             font-weight: bold;
-            margin-left: 10px;
         }
 
-        /* Main Section Styles */
-        main {
-            margin-left: 270px;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
+        /* Main Content styles */
+        .service-list {
+            flex: 1;
+            margin-left: 20px;
         }
 
         .sorting {
-            display: flex;
-            justify-content: space-between;
             margin-bottom: 20px;
         }
 
         .sorting label {
             font-size: 16px;
-            color: #333;
+            margin-right: 10px;
         }
 
-        .sorting select {
-            font-size: 14px;
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        /* Service Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        .service-item {
+        .service-card {
             background-color: #fff;
-            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-item h4 {
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .service-item p {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .service-item .price {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .service-item .duration {
-            font-size: 14px;
-            color: #777;
-        }
-
-        /* Navigation Button */
-        .navigation {
-            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
             text-align: center;
         }
 
-        button {
-            padding: 10px 20px;
+        .service-card h4 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            margin-bottom: 10px;
             font-size: 16px;
-            background-color: #5c6bc0;
+            color: #7f8c8d;
+        }
+
+        .service-card span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2ecc71;
+        }
+
+        /* Buttons */
+        .navigation button {
+            padding: 10px 20px;
+            background-color: #3498db;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
             transition: background-color 0.3s ease;
         }
 
-        button:hover {
-            background-color: #3f4a9e;
+        .navigation button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <aside class="sidebar">
-        <h2>Filters</h2>
-        <div class="filter">
-            <h3>Service Type</h3>
-            <select id="service-type">
-                <option value="all">All</option>
-                <option value="massage">Massage</option>
-                <option value="facial">Facial</option>
-                <option value="aromatherapy">Aromatherapy</option>
-            </select>
-        </div>
-        <div class="filter">
-            <h3>Price Range</h3>
-            <input type="range" id="price-range" min="0" max="100" value="100">
-            <span id="price-value">$100</span>
-        </div>
-        <div class="filter">
-            <h3>Duration</h3>
-            <select id="duration">
-                <option value="all">All</option>
-                <option value="30">30 minutes</option>
-                <option value="60">60 minutes</option>
-                <option value="90">90 minutes</option>
-            </select>
-        </div>
-    </aside>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Filters</h2>
+            <div class="filter">
+                <h3>Service Type</h3>
+                <select id="service-type">
+                    <option value="all">All</option>
+                    <option value="massage">Massage</option>
+                    <option value="facial">Facial</option>
+                    <option value="aromatherapy">Aromatherapy</option>
+                </select>
+            </div>
+            <div class="filter">
+                <h3>Price Range</h3>
+                <input type="range" id="price-range" min="0" max="100" value="100">
+                <span id="price-value">$100</span>
+            </div>
+            <div class="filter">
+                <h3>Duration</h3>
+                <select id="duration">
+                    <option value="all">All</option>
+                    <option value="30">30 minutes</option>
+                    <option value="60">60 minutes</option>
+                    <option value="90">90 minutes</option>
+                </select>
+            </div>
+        </aside>
 
-    <main class="service-list">
-        <h1>Available Services</h1>
-        <div class="sorting">
-            <label for="sort-by">Sort by:</label>
-            <select id="sort-by">
-                <option value="popularity">Popularity</option>
-                <option value="price">Price</option>
-                <option value="duration">Duration</option>
-            </select>
-        </div>
-
-        <div class="services-grid" id="services-grid">
-            <div class="service-item">
-                <h4>Relaxing Massage</h4>
-                <p>A calming full-body massage with essential oils.</p>
-                <div class="price">$50</div>
-                <div class="duration">60 minutes</div>
+        <!-- Main Content -->
+        <main class="service-list">
+            <h1>Available Services</h1>
+            <div class="sorting">
+                <label for="sort-by">Sort by:</label>
+                <select id="sort-by">
+                    <option value="popularity">Popularity</option>
+                    <option value="price">Price</option>
+                    <option value="duration">Duration</option>
+                </select>
             </div>
 
-            <div class="service-item">
-                <h4>Refreshing Facial</h4>
-                <p>A soothing facial with nourishing creams and masks.</p>
-                <div class="price">$60</div>
-                <div class="duration">60 minutes</div>
+            <!-- Service Grid (example services added here) -->
+            <div class="services-grid" id="services-grid">
+                <div class="service-card">
+                    <h4>Relaxing Massage</h4>
+                    <p>Feel relaxed with a soothing massage.</p>
+                    <span>$50</span>
+                </div>
+                <div class="service-card">
+                    <h4>Facial Treatment</h4>
+                    <p>Revitalize your skin with our facial treatments.</p>
+                    <span>$70</span>
+                </div>
+                <div class="service-card">
+                    <h4>Aromatherapy</h4>
+                    <p>Relax with essential oils and aromatherapy.</p>
+                    <span>$60</span>
+                </div>
             </div>
+        </main>
+    </div>
 
-            <div class="service-item">
-                <h4>Aromatherapy Treatment</h4>
-                <p>Experience the healing power of essential oils in a relaxing atmosphere.</p>
-                <div class="price">$70</div>
-                <div class="duration">60 minutes</div>
-            </div>
-        </div>
-    </main>
-        
+    <!-- Navigation -->
     <div class="navigation">
         <button onclick="navigateToPage('home')">Home</button>
     </div>
