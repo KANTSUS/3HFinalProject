@@ -12,10 +12,13 @@
             padding: 0;
             display: flex;
             height: 100vh;
-            background-color: #f8f9fa;
+            background-image: url('https://scontent.xx.fbcdn.net/v/t1.15752-9/431559428_398506869450064_3953681192544795704_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeGHOZyN4y8QPch67JQQviin02rZU60wax_TatlTrTBrH6RTV1qqMw6Q4vda6UPVJh6KF71LgLUX9WfSnsMwJYCQ&_nc_ohc=To-FV7CHwIcQ7kNvgGg5EWA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QGPGAs-jToZsbpoNmZxM_aJFFJIY9kj-d7YAOGp-cf36g&oe=677E20DB');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         .sidebar {
-            background-color: #2c3e50;
+            background-color: rgba(44, 62, 80, 0.9); /* Slight transparency for better visibility */
             color: white;
             padding: 20px;
             width: 250px;
