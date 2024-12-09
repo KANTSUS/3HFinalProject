@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,6 +11,7 @@ h1, h2, h3 {
     margin: 0 0 10px;
 }
 
+/* Sidebar Styles */
 .sidebar {
     background-color: #fff;
     padding: 20px;
@@ -39,11 +41,13 @@ h1, h2, h3 {
     display: inline-block;
 }
 
+/* Price Range Label */
 #price-value {
     font-weight: bold;
     margin-left: 10px;
 }
 
+/* Main Section Styles */
 main {
     margin-left: 270px;
     padding: 20px;
@@ -97,6 +101,7 @@ main {
     color: #777;
 }
 
+/* Button Styles */
 .navigation {
     margin-top: 20px;
     text-align: center;
