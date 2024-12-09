@@ -22,7 +22,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* Session Section Styles */
+
 .session {
     background-color: #ecf0f1;
     padding: 20px;
@@ -42,7 +42,7 @@ body {
     color: #7f8c8d;
 }
 
-/* Navigation Button */
+
 .navigation {
     display: flex;
     justify-content: center;

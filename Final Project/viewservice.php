@@ -18,7 +18,7 @@
             background-attachment: fixed;
         }
         .sidebar {
-            background-color: rgba(44, 62, 80, 0.9); /* Slight transparency for better visibility */
+            background-color: rgba(44, 62, 80, 0.9); 
             color: white;
             padding: 20px;
             width: 250px;
@@ -209,7 +209,7 @@
         </div>
     </div>
 
-    <!-- Confirmation Modal -->
+   
     <div class="modal" id="confirmation-modal">
         <div class="modal-content">
             <h3>Confirm Your Selection</h3>
@@ -220,37 +220,37 @@
     </div>
 
     <script>
-        // Price update logic based on selected duration
+        
         document.getElementById('duration').addEventListener('change', function() {
             const duration = parseInt(this.value);
             const serviceCards = document.querySelectorAll('.service-card');
             serviceCards.forEach(card => {
                 const basePrice = parseInt(card.getAttribute('data-base-price'));
-                const updatedPrice = basePrice + (duration === 30 ? 30 : (duration === 60 ? 30 : 90)); // Add $30 for 30 or 60 minutes, $90 for 90 minutes
+                const updatedPrice = basePrice + (duration === 30 ? 30 : (duration === 60 ? 30 : 90)); 
                 card.querySelector('.price').textContent = `$${updatedPrice}`;
             });
         });
 
-        // Service selection logic
+      
         let selectedService = null;
         const serviceCards = document.querySelectorAll('.service-card');
 
         serviceCards.forEach(card => {
             card.addEventListener('click', function() {
-                // Deselect previously selected card
+                
                 if (selectedService) {
                     selectedService.classList.remove('selected');
                 }
-                // Select the new service card
+                
                 this.classList.add('selected');
                 selectedService = this;
 
-                // Show confirm button
+                
                 document.getElementById('confirm-button').style.display = 'block';
             });
         });
 
-        // Confirmation popup logic
+       
         document.getElementById('confirm-button').addEventListener('click', function() {
             const serviceName = selectedService.querySelector('h3').textContent;
             const servicePrice = selectedService.querySelector('.price').textContent;
@@ -258,16 +258,14 @@
             document.getElementById('confirmation-modal').style.display = 'flex';
         });
 
-        // Handle confirmation choices
-        // Handle confirmation choices
+       
         document.getElementById('confirm-yes').addEventListener('click', function() {
             const serviceName = selectedService.querySelector('h3').textContent;
             const servicePrice = selectedService.querySelector('.price').textContent;
 
-            // Redirect to booknow.php with service details
+            
             window.location.href = `booknow.php?service=${encodeURIComponent(serviceName)}&price=${encodeURIComponent(servicePrice)}`;
-            // Optionally, you can show a confirmation message before redirecting
-            // alert('You have confirmed your selection!');
+            
             document.getElementById('confirmation-modal').style.display = 'none';
         });
 

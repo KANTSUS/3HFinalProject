@@ -24,7 +24,7 @@
   </div>
 
   <script>
-    // Get appointment and payment details from URL parameters
+    
     const urlParams = new URLSearchParams(window.location.search);
     const confirmedService = urlParams.get('service');
     const confirmedDate = urlParams.get('date');
@@ -33,11 +33,11 @@
     const confirmedCardNumber = urlParams.get('cardNumber');
     const confirmedNameOnCard = urlParams.get('nameOnCard');
 
-    // Display the details
+   
     document.getElementById('confirmedService').textContent = `Service: ${confirmedService}`;
     document.getElementById('confirmedDateTime').textContent = `Date & Time: ${confirmedDate} at ${confirmedTime}`;
     document.getElementById('confirmedCardType').textContent = `Card Type: ${confirmedCardType}`;
-    document.getElementById('confirmedCardNumber').textContent = `Card Number: **** **** **** ${confirmedCardNumber.slice(-4)}`; // Show only last 4 digits
+    document.getElementById('confirmedCardNumber').textContent = `Card Number: **** **** **** ${confirmedCardNumber.slice(-4)}`; 
     document.getElementById('confirmedNameOnCard').textContent = `Name on Card: ${confirmedNameOnCard}`;
   </script>
 </body>
