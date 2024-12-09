@@ -277,8 +277,15 @@
         });
 
         // Handle confirmation choices
+        // Handle confirmation choices
         document.getElementById('confirm-yes').addEventListener('click', function() {
-            alert('You have confirmed your selection!');
+            const serviceName = selectedService.querySelector('h3').textContent;
+            const servicePrice = selectedService.querySelector('.price').textContent;
+
+            // Redirect to booknow.php with service details
+            window.location.href = `booknow.php?service=${encodeURIComponent(serviceName)}&price=${encodeURIComponent(servicePrice)}`;
+            // Optionally, you can show a confirmation message before redirecting
+            // alert('You have confirmed your selection!');
             document.getElementById('confirmation-modal').style.display = 'none';
         });
 

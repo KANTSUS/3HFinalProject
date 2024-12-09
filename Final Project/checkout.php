@@ -55,13 +55,7 @@
     document.getElementById('selectedService').textContent = `Service: ${selectedService}`;
     document.getElementById('selectedDateTime').textContent = `Date & Time: ${selectedDate} at ${selectedTime}`;
 
-    // Handle form submission
-    document.getElementById('paymentForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Payment processed successfully!');
-      // Here you can add your payment processing logic
-      
-    });
+    
 
 
     // Handle form submission
