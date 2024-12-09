@@ -1,3 +1,43 @@
+<?php
+// Database connection
+$servername = "localhost";
+$username = "root"; // Replace with your DB username
+$password = ""; // Replace with your DB password
+$dbname = "finalproject";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get data from URL parameters
+$service = $_GET['service'] ?? '';
+$date = $_GET['date'] ?? '';
+$time = $_GET['time'] ?? '';
+$cardType = $_GET['cardType'] ?? '';
+$cardNumber = $_GET['cardNumber'] ?? '';
+$nameOnCard = $_GET['nameOnCard'] ?? '';
+
+// Get the last 4 digits of the card number
+$cardNumberLast4 = substr($cardNumber, -4);
+
+// Insert into database
+$sql = "INSERT INTO appointments (service, date, time, card_type, card_number_last4, name_on_card) 
+        VALUES ('$service', '$date', '$time', '$cardType', '$cardNumberLast4', '$nameOnCard')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Appointment booked successfully!";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+// Close connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
