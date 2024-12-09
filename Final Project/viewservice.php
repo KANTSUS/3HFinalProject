@@ -12,7 +12,7 @@
             padding: 0;
             display: flex;
             height: 100vh;
-            background-image: url('https://i0.wp.com/luaresort.com/wp-content/uploads/2022/05/lua-resort-balatonfured-Body-Treatment-2034-Edit-scaled.jpg?resize=640%2C640&ssl=1');
+            background-image: url('https://www.sanctuarysalondayspa.com/wp-content/uploads/2019/07/The-Path-to-Wellness-with-Massage-Therapy.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
