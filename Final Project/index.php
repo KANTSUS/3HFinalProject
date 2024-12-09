@@ -122,3 +122,4 @@ window.addEventListener('click', function(event) {
   <script src="script.js"></script>
 </body>
 </html>
+
