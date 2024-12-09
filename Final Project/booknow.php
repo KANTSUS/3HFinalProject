@@ -145,15 +145,18 @@
     });
 
     document.getElementById('proceedToPayment').addEventListener('click', () => {
-      const selectedTimeSlot = document.querySelector('.time-slots li.selected');
-      const selectedService = document.getElementById('service').value;
-      if (selectedTimeSlot) {
-        window.location.href = 'propayment.php';
-        // Here you can redirect to the payment page or handle the payment process
-      } else {
-        alert('Please select a time slot.');
-      }
-    });
+  const selectedTimeSlot = document.querySelector('.time-slots li.selected');
+  const selectedService = document.getElementById('service').value;
+
+  if (selectedTimeSlot) {
+    const selectedDateTime = `${selectedDate.textContent} at ${selectedTimeSlot.textContent}`;
+    
+    // Redirect to the checkout page with the selected details
+    window.location.href = `checkout.php?date=${encodeURIComponent(selectedDate.textContent)}&time=${encodeURIComponent(selectedTimeSlot.textContent)}&service=${encodeURIComponent(selectedService)}`;
+  } else {
+    alert('Please select a time slot.');
+  }
+});
 
     function navigateToPage(page) {
       if (page === 'home') {
