@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +14,30 @@
  
   <!-- Hero Section -->
   <header class="hero">
-    <div class="hero-content">
-      <h1>Your Wellness Journey Starts Here</h1>
-      <div class="hero-buttons">
-          <nav>
-                <a  class="cta-btn" href="booknow.php" id="about-link">Book Now</a>
-                <a  class="cta-btn .secondary" href="viewservice.php" id="contact-link">View Service</a>
-            </nav>
-    </nav>
+  <div class="hero-content">
+    <h1>Your Wellness Journey Starts Here</h1>
+    <?php
+    // Display the username if logged in
+    if (isset($_SESSION['username'])) {
+        echo "<h1>Welcome " . $_SESSION['username'] . "</h1>";
+        // Add Logout button
+        echo '<a class="cta-btn" href="logout.php" id="logout-link">Logout</a>';
+    } else {
+        echo "<h1>Welcome Guest</h1>";
+    }
+    ?>
+    <div class="hero-buttons">
+        <nav>
+            <a class="cta-btn" href="booknow.php" id="about-link">Book Now</a>
+            <a class="cta-btn secondary" href="viewservice.php" id="contact-link">View Service</a>
+            <?php
+            // Show the logout button only if the user is logged in
+           
+            ?>
+        </nav>
     </div>
-  </header>
+  </div>
+</header>
 
   <div class="container">
     <!-- Services Overview -->
@@ -30,7 +48,6 @@
       </div>
     </section>
 
- 
     <!-- Testimonials -->
     <section class="testimonials">
       <h2>What Our Clients Say</h2>
@@ -47,10 +64,10 @@
                 <a class="cta-btn1 secondary" href="#" id="login-link">Login</a>
                 <a class="cta-btn1 .secondary" href="schedule.php" id="schedule-link">Schedule Your First Session</a>
             </nav>
-
     </section>
   </div>
 
+  <!-- Popup for Login -->
   <div class="popup-login" id="popup-login">
     <div class="login-form">
       <h2>Login</h2>
@@ -63,17 +80,19 @@
     </div>
   </div>
 
+  <!-- Popup for Create Account -->
   <div class="popup-create-account" id="popup-create-account">
-  <div class="create-account-form">
-    <h2>Create an Account</h2>
-    <form action="create_account.php" method="POST">
-      <input type="email" id="email" name="email" placeholder="Email" required><br>
-      <input type="password" id="password" name="password" placeholder="Password" required><br>
-      <button type="submit">Create Account</button>
-    </form>
-    <button class="close-btn" id="close-create-account">Close</button>
+    <div class="create-account-form">
+      <h2>Create an Account</h2>
+      <form action="create_account.php" method="POST">
+        <input type="text" id="username" name="username" placeholder="Username" required><br>
+        <input type="email" id="email" name="email" placeholder="Email" required><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br>
+        <button type="submit">Create Account</button>
+      </form>
+      <button class="close-btn" id="close-create-account">Close</button>
+    </div>
   </div>
-</div>
 
   <script>
     // Get the login button, popup and close button
@@ -84,33 +103,36 @@
     const createAccountPopup = document.getElementById('popup-create-account');
     const closeCreateAccountButton = document.getElementById('close-create-account');
 
+    // Show the create account popup when the 'Create an Account' button is clicked
     createAccountButton.addEventListener('click', function(event) {
-  event.preventDefault();
-  createAccountPopup.style.display = 'flex'; // Show the popup
-});
+      event.preventDefault();
+      createAccountPopup.style.display = 'flex'; // Show the popup
+    });
 
-// Close the create account popup when close button is clicked
-closeCreateAccountButton.addEventListener('click', function() {
-  createAccountPopup.style.display = 'none'; // Hide the popup
-});
+    // Close the create account popup when the close button is clicked
+    closeCreateAccountButton.addEventListener('click', function() {
+      createAccountPopup.style.display = 'none'; // Hide the popup
+    });
 
-// Close the create account popup when clicked outside the form
-window.addEventListener('click', function(event) {
-  if (event.target === createAccountPopup) {
-    createAccountPopup.style.display = 'none'; // Hide the popup if clicked outside
-  }
-});
+    // Close the create account popup when clicked outside the form
+    window.addEventListener('click', function(event) {
+      if (event.target === createAccountPopup) {
+        createAccountPopup.style.display = 'none'; // Hide the popup if clicked outside
+      }
+    });
+
+    // Show the login popup when the 'Login' button is clicked
     loginButton.addEventListener('click', function(event) {
       event.preventDefault();
       popup.style.display = 'flex'; // Show the popup
     });
 
-    // Close the popup when close button is clicked
+    // Close the login popup when the close button is clicked
     closePopupButton.addEventListener('click', function() {
       popup.style.display = 'none'; // Hide the popup
     });
 
-    // Close the popup when clicked outside the form
+    // Close the login popup when clicked outside the form
     window.addEventListener('click', function(event) {
       if (event.target === popup) {
         popup.style.display = 'none'; // Hide the popup if clicked outside
@@ -118,8 +140,6 @@ window.addEventListener('click', function(event) {
     });
   </script>
 
-
   <script src="script.js"></script>
 </body>
 </html>
-

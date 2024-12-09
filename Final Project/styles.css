@@ -276,3 +276,24 @@ body {
   cursor: pointer;
   margin-top: 10px;
 }
+
+.cta-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.cta-btn:hover {
+  background-color: #45a049;
+}
+
+.cta-btn.secondary {
+  background-color: #f44336;
+}
+
+.cta-btn.secondary:hover {
+  background-color: #e53935;
+}
