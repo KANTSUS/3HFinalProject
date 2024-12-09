@@ -32,18 +32,10 @@
             margin-top: 20px;
             display: block;
         }
-        .sidebar select, .sidebar input[type="range"] {
+        .sidebar select {
             width: 100%;
             margin-top: 10px;
             padding: 5px;
-        }
-        .sidebar .price-range {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .sidebar .price-range span {
-            margin-left: 10px;
         }
         .main-content {
             flex: 1;
@@ -165,11 +157,6 @@
         <select id="service-type">
             <option value="all">All</option>
         </select>
-        <label for="price-range">Price Range</label>
-        <div class="price-range">
-            <input type="range" id="price-range" min="0" max="100" value="100">
-            <span>$100</span>
-        </div>
         <label for="duration">Duration</label>
         <select id="duration">
             <option value="30">30 minutes</option>
@@ -242,11 +229,6 @@
                 const updatedPrice = basePrice + (duration === 30 ? 30 : (duration === 60 ? 30 : 90)); // Add $30 for 30 or 60 minutes, $90 for 90 minutes
                 card.querySelector('.price').textContent = `$${updatedPrice}`;
             });
-        });
-
-        // Handle price range update
-        document.getElementById('price-range').addEventListener('input', function() {
-            this.nextElementSibling.textContent = `$${this.value}`;
         });
 
         // Service selection logic
