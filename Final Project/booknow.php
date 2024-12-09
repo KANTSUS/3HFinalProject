@@ -148,7 +148,7 @@
       const selectedTimeSlot = document.querySelector('.time-slots li.selected');
       const selectedService = document.getElementById('service').value;
       if (selectedTimeSlot) {
-        alert(`Proceeding to payment for ${selectedService} on ${selectedDate.textContent} at ${selectedTimeSlot.textContent}`);
+        window.location.href = 'propayment.php';
         // Here you can redirect to the payment page or handle the payment process
       } else {
         alert('Please select a time slot.');
