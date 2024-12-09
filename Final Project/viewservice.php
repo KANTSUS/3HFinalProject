@@ -12,10 +12,13 @@
             padding: 0;
             display: flex;
             height: 100vh;
-            background-color: #f8f9fa;
+            background-image: url('https://www.sanctuarysalondayspa.com/wp-content/uploads/2019/07/The-Path-to-Wellness-with-Massage-Therapy.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         .sidebar {
-            background-color: #2c3e50;
+            background-color: rgba(44, 62, 80, 0.9); /* Slight transparency for better visibility */
             color: white;
             padding: 20px;
             width: 250px;
@@ -29,18 +32,10 @@
             margin-top: 20px;
             display: block;
         }
-        .sidebar select, .sidebar input[type="range"] {
+        .sidebar select {
             width: 100%;
             margin-top: 10px;
             padding: 5px;
-        }
-        .sidebar .price-range {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .sidebar .price-range span {
-            margin-left: 10px;
         }
         .main-content {
             flex: 1;
@@ -162,14 +157,10 @@
         <select id="service-type">
             <option value="all">All</option>
         </select>
-        <label for="price-range">Price Range</label>
-        <div class="price-range">
-            <input type="range" id="price-range" min="0" max="100" value="100">
-            <span>$100</span>
-        </div>
         <label for="duration">Duration</label>
         <select id="duration">
             <option value="30">30 minutes</option>
+            <option value="60">60 minutes</option>
             <option value="90">90 minutes</option>
         </select>
     </div>
@@ -197,6 +188,21 @@
                 <p>Calming aromatherapy to enhance relaxation.</p>
                 <div class="price">$40</div>
             </div>
+            <div class="service-card" data-base-price="70" id="sauna-card">
+                <h3>Sauna</h3>
+                <p>Relax and detoxify with sauna therapy.</p>
+                <div class="price">$70</div>
+            </div>
+            <div class="service-card" data-base-price="80" id="waxing-card">
+                <h3>Waxing</h3>
+                <p>Smooth and silky skin with waxing treatment.</p>
+                <div class="price">$80</div>
+            </div>
+            <div class="service-card" data-base-price="60" id="ventosa-card">
+                <h3>Ventosa</h3>
+                <p>Improve circulation with ventosa therapy.</p>
+                <div class="price">$60</div>
+            </div>
         </div>
         <div class="home-button">
             <button id="confirm-button" style="display:none;">Confirm</button>
@@ -220,14 +226,9 @@
             const serviceCards = document.querySelectorAll('.service-card');
             serviceCards.forEach(card => {
                 const basePrice = parseInt(card.getAttribute('data-base-price'));
-                const updatedPrice = basePrice + (duration === 30 ? 30 : 90); // Add $30 for 30 minutes or $90 for 90 minutes
+                const updatedPrice = basePrice + (duration === 30 ? 30 : (duration === 60 ? 30 : 90)); // Add $30 for 30 or 60 minutes, $90 for 90 minutes
                 card.querySelector('.price').textContent = `$${updatedPrice}`;
             });
-        });
-
-        // Handle price range update
-        document.getElementById('price-range').addEventListener('input', function() {
-            this.nextElementSibling.textContent = `$${this.value}`;
         });
 
         // Service selection logic
@@ -258,8 +259,15 @@
         });
 
         // Handle confirmation choices
+        // Handle confirmation choices
         document.getElementById('confirm-yes').addEventListener('click', function() {
-            alert('You have confirmed your selection!');
+            const serviceName = selectedService.querySelector('h3').textContent;
+            const servicePrice = selectedService.querySelector('.price').textContent;
+
+            // Redirect to booknow.php with service details
+            window.location.href = `booknow.php?service=${encodeURIComponent(serviceName)}&price=${encodeURIComponent(servicePrice)}`;
+            // Optionally, you can show a confirmation message before redirecting
+            // alert('You have confirmed your selection!');
             document.getElementById('confirmation-modal').style.display = 'none';
         });
 

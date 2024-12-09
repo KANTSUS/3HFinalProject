@@ -58,9 +58,12 @@
     <div class="service mb-6">
       <label for="service" class="block mb-2">Select Service</label>
       <select id="service" class="w-full p-2 border border-gray-300 rounded-lg">
-        <option>Swedish Massage</option>
-        <option>Refreshing Facial</option>
+        <option>Massage</option>
+        <option>Facial</option>
         <option>Aromatherapy</option>
+        <option>Sauna</option>
+        <option>Waxing</option>
+        <option>Ventosa</option>
       </select>
     </div>
     <button id="proceedToPayment" class="w-full bg-purple-700 text-white p-3 rounded-lg mb-4">Proceed to Payment</button>
