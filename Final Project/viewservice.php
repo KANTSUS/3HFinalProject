@@ -170,6 +170,7 @@
         <label for="duration">Duration</label>
         <select id="duration">
             <option value="30">30 minutes</option>
+            <option value="60">60 minutes</option>
             <option value="90">90 minutes</option>
         </select>
     </div>
@@ -197,6 +198,21 @@
                 <p>Calming aromatherapy to enhance relaxation.</p>
                 <div class="price">$40</div>
             </div>
+            <div class="service-card" data-base-price="70" id="sauna-card">
+                <h3>Sauna</h3>
+                <p>Relax and detoxify with sauna therapy.</p>
+                <div class="price">$70</div>
+            </div>
+            <div class="service-card" data-base-price="80" id="waxing-card">
+                <h3>Waxing</h3>
+                <p>Smooth and silky skin with waxing treatment.</p>
+                <div class="price">$80</div>
+            </div>
+            <div class="service-card" data-base-price="60" id="ventosa-card">
+                <h3>Ventosa</h3>
+                <p>Improve circulation with ventosa therapy.</p>
+                <div class="price">$60</div>
+            </div>
         </div>
         <div class="home-button">
             <button id="confirm-button" style="display:none;">Confirm</button>
@@ -220,7 +236,7 @@
             const serviceCards = document.querySelectorAll('.service-card');
             serviceCards.forEach(card => {
                 const basePrice = parseInt(card.getAttribute('data-base-price'));
-                const updatedPrice = basePrice + (duration === 30 ? 30 : 90); // Add $30 for 30 minutes or $90 for 90 minutes
+                const updatedPrice = basePrice + (duration === 30 ? 30 : (duration === 60 ? 30 : 90)); // Add $30 for 30 or 60 minutes, $90 for 90 minutes
                 card.querySelector('.price').textContent = `$${updatedPrice}`;
             });
         });
